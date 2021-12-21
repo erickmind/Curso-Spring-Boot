@@ -36,7 +36,7 @@ public class ProdutoController {
 	// GET para pegar informacoes ja existentes (Read do CRUD)
 	@GetMapping(value = "produtos/{id}")
 	public Produto get(@PathVariable("id") int idProduto) {
-		return listaProduto.get(idProduto);
+		return this.produtoService.findById(idProduto).orElse(new Produto());
 	}
 	
 	// POST para enviar dados novos (Create do CRUD)
@@ -48,19 +48,12 @@ public class ProdutoController {
 	//PUT ou PATCH para alterar algo que ja existe (Update do CRUD)
 	@PutMapping (value = "produtos/{id}")
 	public Produto update(@PathVariable("id") int id, @RequestBody Produto p) {
-			
-		Produto oldProduto = listaProduto.get(id);
-		oldProduto.setNome(p.getNome());
-		oldProduto.setPreco(p.getPreco());
-		
-		listaProduto.set(id, oldProduto);
-		
-		return oldProduto;
+		return this.produtoService.update(id, p);
 	}
 	
 	@DeleteMapping (value = "produtos/{id}")
 	public void delete(@PathVariable("id") int id) {
-		listaProduto.remove(id);
+		this.produtoService.deleteById(id);
 	}
 	
 	
