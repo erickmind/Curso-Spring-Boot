@@ -63,6 +63,6 @@ SELECT * from usuario;
 SELECT * from curso inner join usuario on (usuario.id = curso.usuario);
 SELECT * from curso left join usuario on (usuario.id = curso.usuario);
 
-
-
+INSERT INTO produto (id, nome, preco) VALUES (3, "cafe", 30);
+INSERT INTO produto (nome, preco) VALUES ("pao", 10);
 
