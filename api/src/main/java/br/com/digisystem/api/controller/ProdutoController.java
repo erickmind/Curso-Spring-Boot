@@ -56,5 +56,12 @@ public class ProdutoController {
 		this.produtoService.deleteById(id);
 	}
 	
+	@GetMapping(value = "produtos/search/{nome}/{preco}")
+	public List<Produto> getByName(
+			@PathVariable("nome") String nomeProduto, 
+			@PathVariable("preco") float preco
+			) {
+		return this.produtoService.findByNome(nomeProduto, preco);
+	}
 	
 }
