@@ -46,7 +46,7 @@ public class ProdutoService {
 		this.produtoRepository.deleteById(id);
 	}
 	
-	public List<Produto> findByNome(String nome, float preco) {
+	public Optional<List<Produto>> findByNome(String nome, float preco) {
 		return this.produtoRepository.findByNomeContainsOrPrecoGreaterThan(nome, preco);
 	}
 	
