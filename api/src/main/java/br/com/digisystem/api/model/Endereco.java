@@ -10,7 +10,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.sun.istack.NotNull;
 
 import lombok.AllArgsConstructor;
@@ -45,8 +44,8 @@ public class Endereco {
 	private String bairro;
 	private String cep;
 	
-	@ManyToOne
-	@JoinColumn(name = "cliente_id")
-	@JsonIgnore
+	@ManyToOne // relacao n para 1
+	@JoinColumn(name = "cliente_id") // Para saber que a chave estrangeira eh o id da classe: cliente
+	@JsonIgnore // Para que o json nao cicle e retorne clientes dentro de enderecos... ate o infinito
 	private Cliente cliente;
 }
