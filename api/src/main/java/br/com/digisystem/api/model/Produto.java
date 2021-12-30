@@ -11,13 +11,20 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
 import io.swagger.annotations.ApiModelProperty;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Data
 @Builder
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@AllArgsConstructor 
+@NoArgsConstructor
+@ToString
+
 @Entity
 public class Produto{
 	
@@ -32,7 +39,7 @@ public class Produto{
 	
 	@ManyToMany
 	@JoinTable(
-			name = "produtos-categorias",
+			name = "produtos_categorias",
 			joinColumns = @JoinColumn (name = "produto_id"),
 			inverseJoinColumns = @JoinColumn(name = "categoria_id")
 			)

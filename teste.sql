@@ -1,5 +1,6 @@
 -- para criar um banco de dados
 create database curso_springboot;
+drop database curso_springboot;
 
 -- para especificar qual banco de dados sera usado
 use curso_springboot;
@@ -63,6 +64,14 @@ SELECT * from usuario;
 SELECT * from curso inner join usuario on (usuario.id = curso.usuario);
 SELECT * from curso left join usuario on (usuario.id = curso.usuario);
 
-INSERT INTO produto (id, nome, preco) VALUES (3, "cafe", 30);
-INSERT INTO produto (nome, preco) VALUES ("pao", 10);
+INSERT INTO produto (nome, preco) VALUES ("cafe", 30);
+INSERT INTO produto (id, nome, preco) VALUES (2, "pao", 10);
 
+SELECT * FROM produto;
+DROP TABLE produto;
+
+SELECT * FROM cliente;
+
+SELECT * FROM endereco;
+SELECT * FROM pedido;
+SELECT * FROM pagamento;

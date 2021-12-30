@@ -1,8 +1,12 @@
 package br.com.digisystem.api.model;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
+import javax.persistence.CollectionTable;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -36,4 +40,8 @@ public class Cliente {
 	
 	@OneToMany (mappedBy = "cliente")
 	private List<Endereco> enderecos = new ArrayList<Endereco>();
+	
+	@ElementCollection
+	@CollectionTable ( name = "telefone" )
+	private Set<String> telefone = new HashSet<String>();
 }

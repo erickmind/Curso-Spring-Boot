@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.google.common.base.Optional;
+
 import br.com.digisystem.api.model.Produto;
 import br.com.digisystem.api.services.ProdutoService;
 import br.com.digisystem.api.services.exceptions.ObjectNotFoundDigiException;
@@ -70,18 +72,14 @@ public class ProdutoController {
 		this.produtoService.deleteById(id);
 	}
 	
-	@GetMapping(value = "produtos/search/{nome}/{preco}")
-	public ResponseEntity<List<Produto>> getByName(
-			@PathVariable("nome") String nomeProduto, 
+	@GetMapping( value = "produtos/search/{nome}/{preco}" )
+	public List<Produto> getByName( 			
+			@PathVariable("nome") String nome,
 			@PathVariable("preco") float preco,
-			@RequestParam(value = "fcid", defaultValue = "") String fcid
-			) {
-		System.out.println(fcid);
-		List<Produto> list =  this.produtoService.findByNome(nomeProduto, preco).orElseThrow(
-					() -> new ObjectNotFoundDigiException("Produto não encontrado na lista")
-				);
-		
-		return ResponseEntity.ok().body(list);
+			@RequestParam(value = "fcid", defaultValue = "") String fcid 
+		) {
+		System.out.println( fcid );
+		return this.produtoService.findByNome( nome, preco );		
 	}
 	
 }
