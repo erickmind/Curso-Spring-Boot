@@ -7,6 +7,7 @@ import java.util.HashSet;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import br.com.digisystem.api.model.Categoria;
@@ -21,10 +22,12 @@ import br.com.digisystem.api.repositories.EnderecoRepository;
 import br.com.digisystem.api.repositories.PagamentoRepository;
 import br.com.digisystem.api.repositories.PedidoRepository;
 import br.com.digisystem.api.repositories.ProdutoRepository;
-import lombok.Builder;
 
 @Service
 public class PopularBancoService {
+	
+	@Autowired
+	BCryptPasswordEncoder bCryptPasswordEncoder;
 	
 	@Autowired
 	private ProdutoRepository produtoRepository;
@@ -39,15 +42,15 @@ public class PopularBancoService {
 	private PedidoRepository pedidoRepository;
 	
 	@Autowired
-	private PagamentoRepository pagamentoRepository;
+	private PagamentoRepository pagamentoRepository; 
 	
 	@Autowired
 	private CategoriaRepository categoriaRepository;
 	
 	@Value("${mode}")
 	private String mode;
-	
-public void criarMassaDados( ) {
+		
+	public void criarMassaDados( ) {
 		
 		System.out.println("MODE : " + this.mode);
 		
@@ -94,7 +97,7 @@ public void criarMassaDados( ) {
 					.builder()
 					.cpf("25360975016")
 					.email("cliente@springboot.com")
-					//.senha( this.bCryptPasswordEncoder.encode( "123456" ) )
+					.senha( this.bCryptPasswordEncoder.encode( "123456" ) )
 					.nome("Cliente 1")
 					.telefone(   new HashSet<>( telefones )  )
 					.build();
@@ -144,6 +147,8 @@ public void criarMassaDados( ) {
 			this.pagamentoRepository.save( pag1 );
 			this.pedidoRepository.save(ped1);
 				 
+			
 		}
 	}
+	
 }

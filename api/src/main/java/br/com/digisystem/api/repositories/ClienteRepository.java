@@ -8,6 +8,6 @@ import br.com.digisystem.api.model.Cliente;
 @Repository
 public interface ClienteRepository extends JpaRepository<Cliente, Integer> {
 
-	public Cliente findByEmail( String email);
+	public Cliente findByEmail(String email);
 	
 }

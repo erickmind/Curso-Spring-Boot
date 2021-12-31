@@ -42,8 +42,10 @@ public class ProdutoService {
 		return null;
 	}
 	
-	public void deleteById(int id) {
+	public boolean deleteById(int id) {
 		this.produtoRepository.deleteById(id);
+		
+		return true;
 	}
 	
 	public List<Produto> findByNome(String nome, float preco) {

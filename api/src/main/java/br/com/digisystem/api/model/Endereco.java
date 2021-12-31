@@ -1,13 +1,19 @@
 package br.com.digisystem.api.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.sun.istack.NotNull;
 
 import lombok.AllArgsConstructor;
@@ -18,22 +24,21 @@ import lombok.NoArgsConstructor;
 
 @Data
 @Builder
-@EqualsAndHashCode (onlyExplicitlyIncluded = true) // Para que tenhamos que explicitar quais atributos terao o equals e hashcode alterados
+@EqualsAndHashCode ( onlyExplicitlyIncluded = true)
 @AllArgsConstructor
 @NoArgsConstructor
 
 @Entity
-// @Table (name = "enderecao") para mudar o nome da tabela de "Endereco" para "enderecao"
 public class Endereco {
-	
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@EqualsAndHashCode.Include // Medida de seguranca para garantir que a comparacao entre dois objetos so sera igual se tiverem o mesmo id (chave primaria)
+	@GeneratedValue (strategy = GenerationType.IDENTITY )	
+	@EqualsAndHashCode.Include
 	private int id;
 	
-	// @JsonProperty(value = "logradouro-do-teste") Para mudar o atributo no JSON retornado na requisicao
-	// @Column(name="rua") Para trocar o nome da coluna "logradouro" para "rua"
-	@NotNull // Para que o campo não inicie vazio
+//	@JsonProperty( value = "logradouro-do-teste")
+//	@Column ( name = "rua")
+	@NotNull	
 	private String logradouro;
 	
 	private String numero;
@@ -42,8 +47,9 @@ public class Endereco {
 	private String bairro;
 	private String cep;
 	
-	@ManyToOne // relacao n para 1
-	@JoinColumn(name = "cliente_id") // Para saber que a chave estrangeira eh o id da classe: cliente
-	@JsonIgnore // Para que o json nao cicle e retorne clientes dentro de enderecos... ate o infinito
+	@ManyToOne
+	@JoinColumn ( name = "cliente_id" )	
+	@JsonIgnore
 	private Cliente cliente;
+	
 }

@@ -15,24 +15,24 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@EqualsAndHashCode ( onlyExplicitlyIncluded = true)
 
-@Data
 @Builder
 @Entity
 public class Pagamento {
-
 	@Id
-	@GeneratedValue (strategy = GenerationType.IDENTITY)
+	@GeneratedValue ( strategy = GenerationType.IDENTITY )
 	@EqualsAndHashCode.Include
-	private int id;	
+	private int id;
 	
 	private Date dataPagamento;
-	private double valor;
 	
-	@OneToOne (mappedBy = "pagamento", cascade = CascadeType.ALL)
+	@OneToOne ( mappedBy = "pagamento", cascade = CascadeType.ALL)
 	private Pedido pedido;
+	
+	private double valor;
 	
 }

@@ -36,5 +36,6 @@ public class Categoria {
 	@ManyToMany( mappedBy = "categorias" )	
 	@JsonIgnore
 	private List<Produto> produtos;
-		
+	
+	
 }
