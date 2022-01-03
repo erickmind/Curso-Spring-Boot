@@ -99,7 +99,7 @@ public class PopularBancoService {
 					.email("cliente@springboot.com")
 					.senha( this.bCryptPasswordEncoder.encode( "123456" ) )
 					.nome("Cliente 1")
-					.telefone(   new HashSet<>( telefones )  )
+					.telefone(   new HashSet<>( telefones ) n )
 					.build();
 			
 			Endereco end1 = Endereco
