@@ -1,1 +1,48 @@
 <p>produtos-list works!</p>
+
+<p>
+    {{ produtos | json }}
+</p>
+
+<p>
+    <button class="btn btn-primary" (click)="onTabelaClick()"> Tabela </button>
+</p>
+
+<table class="table" *ngIf=" isShow == true "> 
+    <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Preco</th> 
+    </tr>
+    <tr *ngFor= " let p of produtos ">
+        <td> 
+            {{ p.id }}
+        </td>
+        <td>
+            {{ p.nome }}
+        </td>
+        <td>
+            {{ p.preco }}
+        </td>
+    </tr>
+</table>
+
+<div [class.alert]="true" [class.alert-primary]="true" role="alert">
+    Sem ngClass
+</div>
+
+<div [ngClass]="{'alert-primary':true, 'alert-secondary':false}"> 
+    Com ngClass 
+</div>
+
+<div [class]="minhaClasse" role="alert" nfIf="minhaClasse.length > 0" >
+    This is an Alert!
+</div>
+
+<label class="my-1 mr-2" >Preference</label>
+    <select class="custom-select my-1 mr-sm-2" (change)= "onSelectedBox( $any($event.target).value) " id="inlineFormCustomSelectPref">
+        <option selected> Choose... </option>
+        <option value="alert alert-primary"> Primary </option>
+        <option value="alert alert-secondary"> Secondary </option>
+        <option value="alert alert-warning"> Warning </option>
+    </select>
