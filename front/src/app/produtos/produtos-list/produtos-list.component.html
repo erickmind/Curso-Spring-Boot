@@ -31,7 +31,8 @@
     Sem ngClass
 </div>
 
-<div [ngClass]="{'alert-primary':true, 'alert-secondary':false}"> 
+<div [ngClass]="{'alert':isShow, 'alert-primary':true}"
+    [ngStyle]="{'display': 'block', 'font-size': '30px'}">
     Com ngClass 
 </div>
 
@@ -40,9 +41,11 @@
 </div>
 
 <label class="my-1 mr-2" >Preference</label>
-    <select class="custom-select my-1 mr-sm-2" (change)= "onSelectedBox( $any($event.target).value) " id="inlineFormCustomSelectPref">
+    <select #meuSelect class="custom-select my-1 mr-sm-2" (change)= "onSelectedBox( meuSelect.value) " id="inlineFormCustomSelectPref">
         <option selected> Choose... </option>
         <option value="alert alert-primary"> Primary </option>
         <option value="alert alert-secondary"> Secondary </option>
         <option value="alert alert-warning"> Warning </option>
     </select>
+
+<p> Valor selecionado: {{ meuSelect.value }} </p>
