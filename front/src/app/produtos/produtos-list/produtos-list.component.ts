@@ -9,6 +9,7 @@ export class ProdutosListComponent implements OnInit {
 
   isShow : boolean = true;
   minhaClasse : String = '';
+  produtoSelecionadoPai : any;
 
   produtos = [
     {id: 1, nome: 'Produto 1', preco: 100},
@@ -29,6 +30,11 @@ export class ProdutosListComponent implements OnInit {
   onSelectedBox( selecionado ){
     //alert( selecionado );
     this.minhaClasse = selecionado;
+  }
+
+  maisDetalhes( produto ){
+    //alert( produto.nome );
+    this.produtoSelecionadoPai = produto;
   }
 
 }

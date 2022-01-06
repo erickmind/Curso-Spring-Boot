@@ -7,12 +7,14 @@ import { AppComponent } from './app.component';
 import { SegundoComponent } from './segundo/segundo.component';
 import { PrimeiroComponent } from './primeiro/primeiro.component';
 import { ProdutosModule } from './produtos/produtos.module';
+import { HighlightDirective } from './diretivas/highlight.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     SegundoComponent,
-    PrimeiroComponent
+    PrimeiroComponent,
+    HighlightDirective
   ],
   imports: [
     ProdutosModule,

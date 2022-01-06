@@ -10,22 +10,21 @@
 
 <table class="table" *ngIf=" isShow == true "> 
     <tr>
-        <th>ID</th>
-        <th>Nome</th>
-        <th>Preco</th> 
+        <th> ID </th>
+        <th> Nome </th>
+        <th> Preco </th>
+        <th> Mais detalhes </th>
     </tr>
     <tr *ngFor= " let p of produtos ">
-        <td> 
-            {{ p.id }}
-        </td>
-        <td>
-            {{ p.nome }}
-        </td>
-        <td>
-            {{ p.preco }}
-        </td>
+        <td> {{ p.id }} </td>
+        <td> {{ p.nome }} </td>
+        <td> {{ p.preco }} </td>
+        <td><button (click)="maisDetalhes( p )"> Ver </button></td>
     </tr>
 </table>
+
+<p><app-produto-detalhe [produtoSelecionadoFilho]="produtoSelecionadoPai" ></app-produto-detalhe></p>
+
 
 <div [class.alert]="true" [class.alert-primary]="true" role="alert">
     Sem ngClass

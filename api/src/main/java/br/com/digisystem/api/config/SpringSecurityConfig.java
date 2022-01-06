@@ -49,7 +49,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 	};
 	
 	private static final String[] PUBLIC_ENDPOINTS_GET = {
-			"/produtos/**",
+			"/produtos/**", "/categorias/**"
 	};
 
 	private static final String[] PUBLIC_ENDPOINTS_POST = {

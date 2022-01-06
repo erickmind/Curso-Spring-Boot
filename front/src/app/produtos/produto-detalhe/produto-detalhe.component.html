@@ -1,0 +1,16 @@
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title"> Descrição do produto </h5>
+        
+        <!-- Null safety (se uma variavel estiver vazia, retorna vazio ao inves de dar erro. Se nao retorna o valor) -->
+        <!-- <p class="card-text"> ID: {{ (produtoSelecionadoFilho.id != null ? produtoSelecionadoFilho.id : '' ) }} </p> -->
+        <!-- <p class="card-text"> ID: {{ produtoSelecionadoFilho?.id }} </p> -->
+        
+        <p class="card-text"> ID: {{ produtoSelecionadoFilho?.id }} </p>
+        <p class="card-text"> nome: {{ produtoSelecionadoFilho?.nome }} </p>
+        <p class="card-text"> preco: {{ produtoSelecionadoFilho?.preco }} </p>
+        
+        <p>UPPER CASE : {{ upperCaseNome() }}</p>
+
+    </div>
+  </div>
