@@ -1,8 +1,8 @@
 <p>produtos-list works!</p>
 
-<p>
+<!-- <p>
     {{ produtos | json }}
-</p>
+</p> -->
 
 <p>
     <button class="btn btn-primary" (click)="onTabelaClick()"> Tabela </button>
@@ -23,8 +23,14 @@
     </tr>
 </table>
 
-<p><app-produto-detalhe [produtoSelecionadoFilho]="produtoSelecionadoPai" ></app-produto-detalhe></p>
-
+<div class="row justify-content-center">
+    <p>
+        <app-produto-detalhe 
+        [produtoSelecionadoFilho]="produtoSelecionadoPai" 
+        (notificador)="receberEventoPai( $event )"
+        ></app-produto-detalhe>
+    </p>
+</div>
 
 <div [class.alert]="true" [class.alert-primary]="true" role="alert">
     Sem ngClass

@@ -23,7 +23,7 @@ export class AppComponent {
   onKeyup( inputText ){
     //let cor = "Azul"; // para declarar variavel local do metodo, deve-se usar "let"
     this.meuTexto = inputText; // para usar variavel global da classe, deve-se usar "this."
-    console.log ( inputText );
+    //console.log ( inputText );
   }
 
 }

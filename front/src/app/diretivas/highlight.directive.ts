@@ -15,14 +15,14 @@ export class HighlightDirective {
 
   @HostListener('mouseenter')
   onMouseEnter(){
-    console.log('mouseenter');
+    //console.log('mouseenter');
     //this.renderer.setStyle( this.el.nativeElement, 'background-color', 'blue' );
     this.minhaCor = 'blue';
   }
 
   @HostListener('mouseleave')
   onMouseLeave(){
-    console.log('mouseleave');
+    //console.log('mouseleave');
     //this.renderer.setStyle( this.el.nativeElement, 'background-color', 'white' );
     this.minhaCor = 'white';
   }

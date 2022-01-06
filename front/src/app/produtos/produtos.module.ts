@@ -5,6 +5,8 @@ import { ProdutosRoutingModule } from './produtos-routing.module';
 import { ProdutosListComponent } from './produtos-list/produtos-list.component';
 import { ProdutoDetalheComponent } from './produto-detalhe/produto-detalhe.component';
 
+import {HttpClientModule} from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -13,7 +15,8 @@ import { ProdutoDetalheComponent } from './produto-detalhe/produto-detalhe.compo
   ],
   imports: [
     CommonModule,
-    ProdutosRoutingModule
+    ProdutosRoutingModule,
+    HttpClientModule
   ],
   exports:[
     ProdutosListComponent

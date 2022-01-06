@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-produto-detalhe',
@@ -10,6 +10,9 @@ export class ProdutoDetalheComponent implements OnInit {
   @Input()
   produtoSelecionadoFilho : any;
 
+  @Output()
+  notificador = new EventEmitter();
+
   constructor() { }
 
   ngOnInit(): void {
@@ -19,4 +22,7 @@ export class ProdutoDetalheComponent implements OnInit {
     return this.produtoSelecionadoFilho?.nome.toUpperCase() ?? 'padrão';
   }
 
+  notificarPai(){
+    this.notificador.emit( this.produtoSelecionadoFilho?.id ?? 'id inexistente');
+  }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProdutoService } from '../produto.service';
 
 @Component({
   selector: 'app-produtos-list',
@@ -11,16 +12,21 @@ export class ProdutosListComponent implements OnInit {
   minhaClasse : String = '';
   produtoSelecionadoPai : any;
 
-  produtos = [
-    {id: 1, nome: 'Produto 1', preco: 100},
-    {id: 2, nome: 'Produto 2', preco: 200},
-    {id: 3, nome: 'Produto 3', preco: 300},
-    {id: 4, nome: 'Produto 4', preco: 400}
-  ];
+  produtos : any;
 
-  constructor() { }
+  constructor( private produtoService : ProdutoService ) { }
 
   ngOnInit(): void {
+    this.produtoService.getAll()
+    .subscribe(
+      ( resposta ) => {
+        //console.log( resposta );
+        this.produtos = resposta;
+      },
+      ( error ) => {
+        alert( error.status );
+      }
+    );
   }
 
   onTabelaClick(){
@@ -35,6 +41,10 @@ export class ProdutosListComponent implements OnInit {
   maisDetalhes( produto ){
     //alert( produto.nome );
     this.produtoSelecionadoPai = produto;
+  }
+
+  receberEventoPai( valor ){
+    alert( valor ); 
   }
 
 }
