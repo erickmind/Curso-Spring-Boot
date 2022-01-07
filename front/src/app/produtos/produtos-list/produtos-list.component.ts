@@ -47,4 +47,8 @@ export class ProdutosListComponent implements OnInit {
     alert( valor ); 
   }
 
+  voltarHome(){
+    
+  }
+
 }

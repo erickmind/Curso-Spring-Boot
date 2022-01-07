@@ -17,7 +17,7 @@ export class HighlightDirective {
   onMouseEnter(){
     //console.log('mouseenter');
     //this.renderer.setStyle( this.el.nativeElement, 'background-color', 'blue' );
-    this.minhaCor = 'blue';
+    this.minhaCor = '#F5F5F5';
   }
 
   @HostListener('mouseleave')

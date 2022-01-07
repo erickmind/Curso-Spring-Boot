@@ -8,13 +8,19 @@ import { SegundoComponent } from './segundo/segundo.component';
 import { PrimeiroComponent } from './primeiro/primeiro.component';
 import { ProdutosModule } from './produtos/produtos.module';
 import { HighlightDirective } from './diretivas/highlight.directive';
+import { HomeComponent } from './home/home.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SegundoComponent,
     PrimeiroComponent,
-    HighlightDirective
+    HighlightDirective,
+    HomeComponent,
+    NavbarComponent,
+    FooterComponent
   ],
   imports: [
     ProdutosModule,
