@@ -5,7 +5,9 @@ import { ProdutosListComponent } from './produtos-list/produtos-list.component';
 
 const routes: Routes = [
   { path: 'produtos' , component : ProdutosListComponent },
-  { path: 'produtos/:id' , component : ProdutoFormComponent}
+  { path: 'produtos/novo' , component : ProdutoFormComponent},
+  { path: 'produtos/deletar/:id' , component : ProdutoFormComponent},
+  { path: 'produtos/:id' , component : ProdutoFormComponent} // :id sera o nome da variavel da rota que para ser utilizado no formulario
 ];
 
 @NgModule({

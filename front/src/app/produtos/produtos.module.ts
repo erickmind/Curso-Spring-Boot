@@ -5,25 +5,20 @@ import { ProdutosRoutingModule } from './produtos-routing.module';
 import { ProdutosListComponent } from './produtos-list/produtos-list.component';
 import { ProdutoDetalheComponent } from './produto-detalhe/produto-detalhe.component';
 
-import {HttpClientModule} from '@angular/common/http';
 import { ProdutoFormComponent } from './produto-form/produto-form.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { FormErrorsComponent } from './form-errors/form-errors.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
   declarations: [
     ProdutosListComponent,
     ProdutoDetalheComponent,
-    ProdutoFormComponent,
-    FormErrorsComponent
+    ProdutoFormComponent
   ],
   imports: [
     CommonModule,
     ProdutosRoutingModule,
-    HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule
+    SharedModule
   ],
   exports:[
     ProdutosListComponent

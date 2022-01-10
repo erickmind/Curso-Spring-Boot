@@ -11,7 +11,7 @@ export class FormErrorsComponent implements OnInit {
   isError : boolean = false;
 
   @Input()
-  message! : String;
+  message : String = 'Mensagem padrão';
 
   constructor() { }
 

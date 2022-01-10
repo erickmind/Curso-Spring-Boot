@@ -7,17 +7,16 @@ import { AppComponent } from './app.component';
 import { SegundoComponent } from './segundo/segundo.component';
 import { PrimeiroComponent } from './primeiro/primeiro.component';
 import { ProdutosModule } from './produtos/produtos.module';
-import { HighlightDirective } from './diretivas/highlight.directive';
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     SegundoComponent,
     PrimeiroComponent,
-    HighlightDirective,
     HomeComponent,
     NavbarComponent,
     FooterComponent
@@ -26,7 +25,8 @@ import { FooterComponent } from './footer/footer.component';
     ProdutosModule,
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

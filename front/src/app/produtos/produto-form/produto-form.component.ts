@@ -1,6 +1,7 @@
+import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProdutoService } from '../produto.service';
 
 @Component({
@@ -11,17 +12,20 @@ import { ProdutoService } from '../produto.service';
 export class ProdutoFormComponent implements OnInit {
 
   formulario! : FormGroup;
+  id_produto! : number;
+  isEdition : boolean = false;
 
   constructor( private activatedRoute : ActivatedRoute,
     private produtoService : ProdutoService,
-    private formBuilder : FormBuilder
+    private formBuilder : FormBuilder,
+    private router : Router
       ) {
 
         this.formulario = this.formBuilder
         .group(
           {
-            emailControl : [ null , [ Validators.required, Validators.minLength( 8 ) ] ],
-            passwordControl : [ null, [ Validators.required ] ]
+            nome : [ null , [ Validators.required ] ],
+            preco : [ null, [ Validators.required ] ]
           }
         );
 
@@ -30,8 +34,13 @@ export class ProdutoFormComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(
       (rotaParams) => {
-        console.log( rotaParams?.['id'] );
-        this.get( rotaParams?.['id'] );
+
+        if(rotaParams?.['id']){
+        //console.log( rotaParams?.['id'] );
+          this.id_produto = rotaParams?.['id']
+          this.get( rotaParams?.['id'] );
+          this.isEdition = true;
+        }
       }
     );
   }
@@ -45,12 +54,29 @@ export class ProdutoFormComponent implements OnInit {
     .subscribe(
       ( response ) => {
         console.log( response );
+        // Passamos um objeto para patchValue = { nome: P1, preco: 100} vindo da API
+        this.formulario.patchValue( response );
       }
     );
   }
 
   onSubmit(){
-    alert( "asasaa" );
+    if (this.isEdition){
+      this.produtoService.update( this.id_produto, this.formulario.value ).
+      subscribe(
+        ( response ) => {
+          alert('Produto alterado com sucesso');
+          this.router.navigate(['/produtos']);
+        }
+      );
+    }else{
+      this.produtoService.create( this.formulario.value )
+      .subscribe(
+        ( response ) => {
+          alert('Produto criado com sucesso');
+          this.router.navigate(['/produtos']);
+        }
+      );
+    }
   }
-
 }

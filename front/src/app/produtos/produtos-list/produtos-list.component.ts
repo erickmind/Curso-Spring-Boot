@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { ProdutoService } from '../produto.service';
+
 
 @Component({
   selector: 'app-produtos-list',
@@ -14,17 +17,15 @@ export class ProdutosListComponent implements OnInit {
 
   produtos : any;
 
-  constructor( private produtoService : ProdutoService ) { }
+  constructor( private produtoService : ProdutoService, private Router : Router, private toastr : ToastrService) { }
 
   ngOnInit(): void {
     this.produtoService.getAll()
     .subscribe(
-      ( resposta ) => {
-        //console.log( resposta );
-        this.produtos = resposta;
+      ( resposta ) => {this.produtos = resposta;
+        //console.log( resposta );  
       },
-      ( error ) => {
-        alert( error.status );
+      ( error )  => {alert( error.status )
       }
     );
   }
@@ -47,8 +48,27 @@ export class ProdutosListComponent implements OnInit {
     alert( valor ); 
   }
 
-  voltarHome(){
-    
+  editar( produto ){
+    this.Router.navigate( ['produtos', produto.id] );
+  }
+
+  deletar( id ){
+    this.produtoService.delete( id)
+    .subscribe(
+      ( response ) => {
+        //alert('Produto deletado com sucesso');
+
+        //Achar posicao do elemento no vetor produtos
+        let index = this.produtos.findIndex( x => {return x.id == id});
+
+        this.produtos.splice(index, 1);
+        
+        this.toastr.success('Produto deletado com sucesso!');
+      },
+      (error) => {
+        this.toastr.error( 'Erro ao deletar produto!' );
+      }
+    );
   }
 
 }

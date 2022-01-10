@@ -18,7 +18,19 @@ export class ProdutoService {
     return this.http.get('http://localhost:8080/produtos');
   }
 
+  create( produto ){
+    return this.http.post(`http://localhost:8080/produtos`, produto);
+  }
+
   get( id ){
     return this.http.get(`http://localhost:8080/produtos/${id}`);
+  }
+
+  update( id, produto ){
+    return this.http.put(`http://localhost:8080/produtos/${id}`, produto);
+  }
+
+  delete( id ){
+    return this.http.delete(`http://localhost:8080/produtos/${id}`);
   }
 }

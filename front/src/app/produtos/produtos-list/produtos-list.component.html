@@ -1,12 +1,10 @@
-<p>produtos-list works!</p>
-
-<div class="row justify-content-center">
-    <a href="/home" class="btn btn-info"> Home </a>
+<div class= "float-right mt-3 mb-2">
+    <a [routerLink]="['/produtos/novo']" class="btn btn-primary"> Novo </a>
 </div>
 
-<p>
-    <button class="btn btn-primary" (click)="onTabelaClick()"> Tabela </button>
-</p>
+<!-- <p>
+    <button class="btn btn-primary mt-3" (click)="onTabelaClick()"> Tabela </button>
+</p> -->
 
 <table class="table" *ngIf=" isShow == true "> 
     <tr>
@@ -19,11 +17,18 @@
         <td> {{ p.id }} </td>
         <td> {{ p.nome }} </td>
         <td> {{ p.preco }} </td>
-        <td><button (click)="maisDetalhes( p )"> Ver </button></td>
+        <td>
+            <!-- <button class="btn btn-info" (click)="editar( p )"> Editar </button> -->
+            <a class="btn btn-info mr-2" [routerLink] = "['/produtos', p.id]"> Editar </a>
+            <a class="btn btn-danger" (click) = "deletar(p.id)"> Deletar </a>
+        </td>
     </tr>
+    <!-- <tr>
+        <button class="btn btn-primary" [routerLink] = "['/produtos/novo']"> Criar produto </button>
+    </tr> -->
 </table>
 
-<div class="row justify-content-center">
+<!-- <div class="row justify-content-center">
     <p>
         <app-produto-detalhe 
         [produtoSelecionadoFilho]="produtoSelecionadoPai" 
@@ -53,4 +58,4 @@
         <option value="alert alert-warning"> Warning </option>
     </select>
 
-<p> Valor selecionado: {{ meuSelect.value }} </p>
+<p> Valor selecionado: {{ meuSelect.value }} </p> -->
