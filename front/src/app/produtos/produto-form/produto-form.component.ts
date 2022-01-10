@@ -20,7 +20,8 @@ export class ProdutoFormComponent implements OnInit {
         this.formulario = this.formBuilder
         .group(
           {
-            emailControl : [ null , [ Validators.required ] ] 
+            emailControl : [ null , [ Validators.required, Validators.minLength( 8 ) ] ],
+            passwordControl : [ null, [ Validators.required ] ]
           }
         );
 
@@ -33,6 +34,10 @@ export class ProdutoFormComponent implements OnInit {
         this.get( rotaParams?.['id'] );
       }
     );
+  }
+
+  isFieldValid( nomeField ){
+    return !this.formulario.get( nomeField )?.valid && this.formulario.get( nomeField )?.touched;
   }
 
   private get( id ){
