@@ -1,7 +1,7 @@
-import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { ProdutoService } from '../produto.service';
 
 @Component({
@@ -15,10 +15,13 @@ export class ProdutoFormComponent implements OnInit {
   id_produto! : number;
   isEdition : boolean = false;
 
+  buttonText : string = 'Salvar';
+
   constructor( private activatedRoute : ActivatedRoute,
     private produtoService : ProdutoService,
     private formBuilder : FormBuilder,
-    private router : Router
+    private router : Router,
+    private toastr : ToastrService
       ) {
 
         this.formulario = this.formBuilder
@@ -39,6 +42,7 @@ export class ProdutoFormComponent implements OnInit {
         //console.log( rotaParams?.['id'] );
           this.id_produto = rotaParams?.['id']
           this.get( rotaParams?.['id'] );
+          this.buttonText = 'Alterar';
           this.isEdition = true;
         }
       }
@@ -65,16 +69,16 @@ export class ProdutoFormComponent implements OnInit {
       this.produtoService.update( this.id_produto, this.formulario.value ).
       subscribe(
         ( response ) => {
-          alert('Produto alterado com sucesso');
-          this.router.navigate(['/produtos']);
+          this.toastr.info(' Produto editado com sucesso! ');
+          this.router.navigate(['produtos']);
         }
       );
     }else{
       this.produtoService.create( this.formulario.value )
       .subscribe(
         ( response ) => {
-          alert('Produto criado com sucesso');
-          this.router.navigate(['/produtos']);
+          this.toastr.success(' Produto criado com sucesso! ');
+          this.router.navigate(['produtos']);
         }
       );
     }

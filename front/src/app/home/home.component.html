@@ -4,7 +4,11 @@
 
 <p>{{ getMinhaVariavel() }}</p>
 
-<p> {{ 1+5 }}</p>
+<p> {{ 1+5 | currency:'BRL' }}</p>
+
+<p> Hoje: {{ hoje | date:'dd/MM/yyyy'  }} </p>
+
+<p> {{ obj | json }} </p>
 
 <p>
   <a href= "{{ site }}" target = 'blank'> Clique aqui Interpolação </a>
@@ -35,4 +39,4 @@
 
 <app-segundo></app-segundo>
 
-<app-produtos-list></app-produtos-list>
+<!-- <app-produtos-list></app-produtos-list> -->

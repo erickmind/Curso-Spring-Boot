@@ -11,6 +11,9 @@ export class HomeComponent {
   minhaVariavel = "Angular 9";
   meuTexto; // Variavel global do metodo
 
+  hoje = new Date();
+  obj = { nome : 'Meu nome'};
+
   site = "http://grandeporte.com.br";
 
   getMinhaVariavel(){

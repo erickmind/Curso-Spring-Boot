@@ -17,19 +17,20 @@ import { ToastrModule } from 'ngx-toastr';
   imports: [
     CommonModule,
     SharedRoutingModule,
-    HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule,
+    //BrowserAnimationsModule,
+    HttpClientModule,
     ToastrModule.forRoot()
   ],
   exports:[
+    CommonModule,
     FormErrorsComponent,
     HighlightDirective,
-    HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule,
+    HttpClientModule,
+    //BrowserAnimationsModule,
     ToastrModule
   ]
 })
