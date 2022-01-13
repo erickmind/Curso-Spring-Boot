@@ -1,10 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
+import { Produto } from './shared/produto';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProdutoService {
+
+  url : string = `${environment.apiUrl}/produtos`;
 
   constructor( private http : HttpClient) {}
 
@@ -15,22 +19,22 @@ export class ProdutoService {
     //   {id: 3, nome: 'Produto 3', preco: 300},
     //   {id: 4, nome: 'Produto 4', preco: 400}
     // ];
-    return this.http.get('http://localhost:8080/produtos');
+    return this.http.get<Produto[]>(this.url);
   }
 
   create( produto ){
-    return this.http.post(`http://localhost:8080/produtos`, produto);
+    return this.http.post<Produto>(this.url, produto);
   }
 
   get( id ){
-    return this.http.get(`http://localhost:8080/produtos/${id}`);
+    return this.http.get<Produto>(`${this.url}/${id}`);
   }
 
   update( id, produto ){
-    return this.http.put(`http://localhost:8080/produtos/${id}`, produto);
+    return this.http.put<Produto>(`${this.url}/${id}`, produto);
   }
 
   delete( id ){
-    return this.http.delete(`http://localhost:8080/produtos/${id}`);
+    return this.http.delete(`${this.url}/${id}`);
   }
 }

@@ -9,6 +9,6 @@ export class GuardService implements CanActivate{
   constructor() {}
 
   canActivate() : boolean {
-    return false;
+    return true;
   }
 }
