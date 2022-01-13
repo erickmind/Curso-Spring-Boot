@@ -8,7 +8,7 @@ import { Produto } from './shared/produto';
 })
 export class ProdutoService {
 
-  url : string = `${environment.apiUrl}/produtos`;
+  url : string = `${environment['apiUrl']}/produtos`;
 
   constructor( private http : HttpClient) {}
 
